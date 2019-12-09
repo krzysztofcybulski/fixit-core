@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: ${JDBC_DATABASE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
+  jpa:
+    show-sql: true
+
+identity:
+  users:
+    technician:
+      name: Pracownik techniczny
+      email: technik@test.pl
+      groups:
+        - technician
+    administrator:
+      name: Administracja remontowa
+      email: administrator@test.pl
+      groups:
+        - administrator
+    manager:
+      name: Zarządza obiektu
+      email: zarzadca@test.pl
+      groups:
+        - manager
