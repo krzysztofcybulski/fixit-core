@@ -37,15 +37,24 @@ class ProcessService(private val runtimeService: RuntimeService,
 
     private fun CamundaProcessInstance.toMiniDomain(): MiniProcessInstance  {
         val tasks = getTasks(this)
-        val progress: Int = try { tasks.first { it.priority >= 0 }.priority } catch (e: NoSuchElementException) { 0 }
         return MiniProcessInstance(
-                id, tasks.first().name, progress, tasks.first().assignee, getPhoto(this), businessKey
+                id, tasks.first().name, getProgress(tasks), tasks.first().assignee, getPhoto(this), businessKey
         )
     }
 
-    private fun CamundaProcessInstance.toDomain(): ProcessInstance = ProcessInstance(
-            id, getVariables(this), businessKey
-    )
+    private fun CamundaProcessInstance.toDomain(): ProcessInstance {
+        val tasks = getTasks(this)
+        return ProcessInstance(
+                id, tasks.first().name, getProgress(tasks), getVariables(this),
+                tasks.first().assignee, getPhoto(this), businessKey
+        )
+    }
+
+    private fun getProgress(tasks: List<Task>): Int = try {
+            tasks.first { it.priority >= 0 }.priority
+        } catch (e: NoSuchElementException) {
+            0
+        }
 
     private fun getPhoto(processInstance: CamundaProcessInstance): String? =
             runtimeService.getVariable(processInstance.id, "photo") as String?
@@ -61,6 +70,8 @@ class ProcessService(private val runtimeService: RuntimeService,
                 .list()
 }
 
-data class MiniProcessInstance(val id: String, val status: String, val progress: Int, val assignee: String?, val photo: String?, val businessKey: String?)
+data class MiniProcessInstance(val id: String, val status: String, val progress: Int,
+                               val assignee: String?, val photo: String?, val businessKey: String?)
 
-data class ProcessInstance(val id: String, val variables: Map<String, Any>, val businessKey: String?)
+data class ProcessInstance(val id: String, val status: String, val progress: Int, val variables: Map<String, Any>,
+                           val assignee: String?, val photo: String?, val businessKey: String?)

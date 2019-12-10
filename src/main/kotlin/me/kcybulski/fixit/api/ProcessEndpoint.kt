@@ -37,8 +37,9 @@ data class ProcessRequest(val definitionKey: String, val variables: Map<String, 
 
 data class MiniProcessResponse(val id: String, val status: String, val progress: Int, val assignee: String?, val photo: String?, val businessKey: String?)
 
-data class ProcessResponse(val id: String, val variables: Map<String, Any>, val businessKey: String?)
+data class ProcessResponse(val id: String, val status: String, val progress: Int, val variables: Map<String, Any>,
+                           val assignee: String?, val photo: String?, val businessKey: String?)
 
 private fun MiniProcessInstance.response() = MiniProcessResponse(id, status, progress, assignee, photo, businessKey)
 
-private fun ProcessInstance.response() = ProcessResponse(id, variables, businessKey)
+private fun ProcessInstance.response() = ProcessResponse(id, status, progress, variables, assignee, photo, businessKey)
