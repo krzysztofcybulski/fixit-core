@@ -6,6 +6,11 @@ spring:
   jpa:
     show-sql: true
 
+email:
+  majljet:
+    apiKey: ${MAJLJET_API_KEY}
+    apiSecret: ${MAJLJET_API_SECRET}
+
 identity:
   users:
     technician:
