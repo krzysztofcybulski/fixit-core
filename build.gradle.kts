@@ -39,6 +39,7 @@ dependencies {
 	implementation("org.springframework.security.oauth:spring-security-oauth2:2.3.7.RELEASE")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
+	implementation("com.mailjet:mailjet-client:4.2.1")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
