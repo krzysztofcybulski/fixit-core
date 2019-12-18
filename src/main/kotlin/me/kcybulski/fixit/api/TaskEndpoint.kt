@@ -1,8 +1,8 @@
 package me.kcybulski.fixit.api
 
-import me.kcybulski.fixit.domain.MiniTask
-import me.kcybulski.fixit.domain.Task
-import me.kcybulski.fixit.domain.UserTaskService
+import me.kcybulski.fixit.domain.processes.MiniTask
+import me.kcybulski.fixit.domain.processes.Task
+import me.kcybulski.fixit.domain.processes.UserTaskService
 import org.camunda.bpm.engine.form.FormField
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.Authentication

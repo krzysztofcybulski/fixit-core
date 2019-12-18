@@ -1,4 +1,4 @@
-package me.kcybulski.fixit.domain
+package me.kcybulski.fixit.domain.emails
 
 interface EmailSender {
 

@@ -1,4 +1,4 @@
-package me.kcybulski.fixit.domain
+package me.kcybulski.fixit.domain.processes
 
 import org.camunda.bpm.engine.FormService
 import org.camunda.bpm.engine.TaskService

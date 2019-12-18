@@ -1,8 +1,8 @@
 package me.kcybulski.fixit.api
 
-import me.kcybulski.fixit.domain.MiniProcessInstance
-import me.kcybulski.fixit.domain.ProcessInstance
-import me.kcybulski.fixit.domain.ProcessService
+import me.kcybulski.fixit.domain.processes.MiniProcessInstance
+import me.kcybulski.fixit.domain.processes.ProcessInstance
+import me.kcybulski.fixit.domain.processes.ProcessService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

@@ -1,4 +1,4 @@
-package me.kcybulski.fixit.domain
+package me.kcybulski.fixit.domain.users
 
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority

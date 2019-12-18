@@ -1,6 +1,6 @@
 package me.kcybulski.fixit.api
 
-import me.kcybulski.fixit.domain.DefinitionService
+import me.kcybulski.fixit.domain.processes.DefinitionService
 import org.springframework.http.MediaType.APPLICATION_XML_VALUE
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable

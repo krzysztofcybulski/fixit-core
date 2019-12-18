@@ -1,6 +1,6 @@
 package me.kcybulski.fixit.config
 
-import me.kcybulski.fixit.domain.UsersProvider
+import me.kcybulski.fixit.domain.users.UsersProvider
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod.GET

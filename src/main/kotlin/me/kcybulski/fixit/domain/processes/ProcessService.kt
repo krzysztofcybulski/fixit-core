@@ -1,4 +1,4 @@
-package me.kcybulski.fixit.domain
+package me.kcybulski.fixit.domain.processes
 
 import me.kcybulski.fixit.domain.exceptions.ProcessDefinitionNotFoundException
 import org.camunda.bpm.engine.RuntimeService
@@ -35,7 +35,7 @@ class ProcessService(private val runtimeService: RuntimeService,
             businessKey?.let { runtimeService.startProcessInstanceById(processDefinition.id, it, variables) }
                     ?: runtimeService.startProcessInstanceById(processDefinition.id, variables)
 
-    private fun CamundaProcessInstance.toMiniDomain(): MiniProcessInstance  {
+    private fun CamundaProcessInstance.toMiniDomain(): MiniProcessInstance {
         val tasks = getTasks(this)
         return MiniProcessInstance(
                 id, tasks.first().name, getProgress(tasks), tasks.first().assignee, getPhoto(this), businessKey

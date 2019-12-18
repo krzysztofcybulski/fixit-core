@@ -6,10 +6,14 @@ spring:
   jpa:
     show-sql: true
 
-email:
-  majljet:
-    apiKey: ${MAJLJET_API_KEY}
-    apiSecret: ${MAJLJET_API_SECRET}
+  mail:
+    host: smtp-pulse.com
+    port: 2525
+    username: krzysztofpcy@gmail.com
+    password: ${PULSE_PASSWORD}
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
 
 identity:
   users:
