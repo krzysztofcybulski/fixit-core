@@ -12,6 +12,7 @@ class JavaEmailSender(private val javaMailSender: JavaMailSender): EmailSender {
 
     override fun sendEmail(request: EmailRequest) {
         val message = SimpleMailMessage()
+        message.setFrom("contact@kcybulski.me")
         message.setTo(request.receiverEmail)
         message.setSubject(request.subject)
         message.setText(request.text)
