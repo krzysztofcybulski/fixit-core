@@ -26,6 +26,7 @@ class OAuth2ServerConfig : ResourceServerConfigurerAdapter() {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/definitions/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/processes").permitAll()
+                .antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
                 .anyRequest().authenticated()
     }
 }

@@ -52,6 +52,7 @@ dependencies {
 	testImplementation("org.springframework.security:spring-security-test")
 	testImplementation("org.spockframework:spock-core:1.3-groovy-2.5")
 	testImplementation("org.spockframework:spock-spring:1.3-groovy-2.5")
+	testImplementation("com.h2database:h2:1.4.200")
 
 }
 

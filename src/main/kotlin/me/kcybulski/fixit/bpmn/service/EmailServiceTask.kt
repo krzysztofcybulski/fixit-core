@@ -3,11 +3,13 @@ package me.kcybulski.fixit.bpmn.service
 import me.kcybulski.fixit.bpmn.SpringContext
 import me.kcybulski.fixit.domain.emails.EmailRequest
 import me.kcybulski.fixit.domain.emails.EmailSender
+import me.kcybulski.fixit.domain.services.ServiceTask
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.Expression
-import org.camunda.bpm.engine.delegate.JavaDelegate
+import org.springframework.stereotype.Service
 
-class EmailServiceTask: JavaDelegate {
+@Service("email")
+class EmailServiceTask: ServiceTask {
 
     private lateinit var receiverEmail: Expression
     private lateinit var receiverName: Expression
