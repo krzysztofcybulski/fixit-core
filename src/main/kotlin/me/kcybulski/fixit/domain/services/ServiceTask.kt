@@ -12,5 +12,10 @@ interface ServiceTask: JavaDelegate{
     fun getFields(): List<Field> = javaClass
             .declaredFields
             .filter { it.type == Expression::class.java }
-            .map { Field(it.name, it.name) }
+            .map { toField(it) }
+
+    private fun toField(field: java.lang.reflect.Field): Field = field
+            .getDeclaredAnnotation(ServiceTaskField::class.java)
+            ?.let { Field(it.name, field.name) }
+            ?: Field(field.name, field.name)
 }

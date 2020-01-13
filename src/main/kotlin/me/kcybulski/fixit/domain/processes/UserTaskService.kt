@@ -49,7 +49,7 @@ class UserTaskService(private val taskService: TaskService,
             taskService.getVariable(id, "photo") as String?, priority)
 
     private fun CamundaTask.asDomain() = Task(id, name,
-            taskService.getVariables(id),
+            taskService.getVariables(id).filterKeys { it != "photo" },
             formService.getTaskFormData(id).formFields,
             priority)
 }

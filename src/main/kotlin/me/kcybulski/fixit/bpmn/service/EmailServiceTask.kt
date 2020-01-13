@@ -1,23 +1,30 @@
 package me.kcybulski.fixit.bpmn.service
 
-import me.kcybulski.fixit.bpmn.SpringContext
 import me.kcybulski.fixit.domain.emails.EmailRequest
 import me.kcybulski.fixit.domain.emails.EmailSender
 import me.kcybulski.fixit.domain.services.ServiceTask
+import me.kcybulski.fixit.domain.services.ServiceTaskField
 import org.camunda.bpm.engine.delegate.DelegateExecution
 import org.camunda.bpm.engine.delegate.Expression
 import org.springframework.stereotype.Service
 
 @Service("email")
-class EmailServiceTask: ServiceTask {
+class EmailServiceTask(private val emailSender: EmailSender): ServiceTask {
 
-    private lateinit var receiverEmail: Expression
-    private lateinit var receiverName: Expression
-    private lateinit var subject: Expression
-    private lateinit var text: Expression
+    @field:ServiceTaskField("Email odbiorcy")
+    lateinit var receiverEmail: Expression
+
+    @field:ServiceTaskField("Nazwa odbiorcy")
+    lateinit var receiverName: Expression
+
+    @field:ServiceTaskField("Temat")
+    lateinit var subject: Expression
+
+    @field:ServiceTaskField("Tekst")
+    lateinit var text: Expression
 
     override fun execute(execution: DelegateExecution) {
-        SpringContext.getBean(EmailSender::class.java).sendEmail(getRequest(execution))
+        this.emailSender.sendEmail(getRequest(execution))
     }
 
     private fun getRequest(execution: DelegateExecution) = EmailRequest(
